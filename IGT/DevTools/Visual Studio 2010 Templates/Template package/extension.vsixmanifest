@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+  <Identifier Id="TouchToolkit.832b9b0f-154c-4d86-a60a-f0490e0c8a15">
+    <Name>TouchToolkit Templates</Name>
+    <Author>Shahedul Huq Khandkar</Author>
+    <Version>0.5.1.2</Version>
+    <Description>TouchToolkit helps simplify the development process of multi-touch applications. This package contains project and item templates for multi-touch enabled Silverlight, WPF 4.0 applications including special device supports (i.e. Microsoft Surface)</Description>
+    <Locale>1033</Locale>
+    <Icon>VSIXProject_small.png</Icon>
+    <PreviewImage>VSIXProject_large.png</PreviewImage>
+    <InstalledByMsi>false</InstalledByMsi>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Pro</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+  </Identifier>
+  <References />
+  <Content>
+    <ProjectTemplate>Windows7ProjectTemplate</ProjectTemplate>		
+	<ProjectTemplate>MicrosoftSurfaceTemplate</ProjectTemplate>
+	<ItemTemplate>GestureDefinitionTemplate</ItemTemplate>
+	<ItemTemplate>GestureTestTemplate</ItemTemplate>
+	<ItemTemplate>ReturnTypeTemplate</ItemTemplate>
+	<ItemTemplate>RuleTemplate</ItemTemplate>
+  </Content>
+</Vsix>

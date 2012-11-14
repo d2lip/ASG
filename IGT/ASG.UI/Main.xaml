@@ -1,0 +1,441 @@
+<UserControl x:Class="ASG.UI.Main"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="http://schemas.microsoft.com/surface/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <UserControl.Resources>
+        <sys:Double x:Key="MyFontSize">30</sys:Double>
+        <Style  TargetType="{x:Type s:SurfaceButton}">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+            <Setter Property="FontSize"
+                    Value="{DynamicResource MyFontSize}" />
+        </Style>
+        <Style TargetType="{x:Type s:SurfaceToggleButton}">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+            <Setter Property="FontSize"
+                    Value="{DynamicResource MyFontSize}" />
+        </Style>
+        <Style  TargetType="{x:Type Label}">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+            <Setter Property="FontSize"
+                    Value="{DynamicResource MyFontSize}" />
+        </Style>
+        <Style  TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+            <Setter Property="FontSize"
+                    Value="{DynamicResource MyFontSize}" />
+        </Style>
+        <Style x:Key="ScatterViewItemStyle"
+               TargetType="{x:Type s:ScatterViewItem}">
+            <Setter Property="MinWidth"
+                    Value="{Binding Path=Content.MinWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            <Setter Property="MinHeight"
+                    Value="{Binding Path=Content.MinHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            <Setter Property="MaxWidth"
+                    Value="{Binding Path=Content.MaxWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            <Setter Property="MaxHeight"
+                    Value="{Binding Path=Content.MaxHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            <Setter Property="Width"
+                    Value="{Binding Path=Content.Width, RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
+            <Setter Property="Height"
+                    Value="{Binding Path=Content.Height, RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type s:ScatterViewItem}">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <s:ScatterView HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Name="Container"
+                   AllowDrop="True"
+                   Width="Auto"
+                   Height="Auto"
+                   Background="#282828">
+        <s:ScatterViewItem   IsTopmostOnActivation="False"
+                             Tag="Fixed"
+                             Orientation="0"
+                             Name="CanvasItem"
+                             CanMove="False"
+                             Background="#282828"
+                             CanRotate="False"
+                             CanScale="False"
+                             Margin="25"
+                             BorderBrush="#282828">
+            <Grid>
+                <Image Name="BackgroundImage" />
+                <Viewbox StretchDirection="Both"
+                         Stretch="Fill">
+                    <InkCanvas Name="PageInkCanvas"
+                               Width="Auto"
+                               Height="Auto"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               StrokeCollected="OnStrokeCollected"
+                               TouchEnter="PageInkCanvas_TouchDown"
+                               TouchLeave="PageInkCanvas_TouchUp"
+                               Background="White"
+                               StylusUp="PageInkCanvas_StylusUp"
+                               StylusDown="PageInkCanvas_StylusDown" />
+                </Viewbox>
+            </Grid>
+        </s:ScatterViewItem>
+        <!--BUTTONS ON TOP-->
+        <s:ScatterViewItem Orientation="0"
+                           Name="TopMenu"
+                           IsTopmostOnActivation="True"
+                           Tag="Fixed"
+                           BorderBrush="{x:Null}"
+                           ZIndex="1"
+                           CanMove="False"
+                           CanRotate="False"
+                           CanScale="False"
+                           BorderThickness="0"
+                           Background="#282828">
+            <DockPanel LastChildFill="False">
+                <s:SurfaceButton DockPanel.Dock="Left"
+                                 Name="Evaluate"
+                                 Padding="0"
+                                 Background="#282828"
+                                 Height="50"
+                                 Margin="50,0"
+                                 Click="Evaluate_Click">
+                    <DockPanel>
+                        <Image  DockPanel.Dock="Left"
+                                Source="/ASG.UI;component/Resources/wmp.ico"
+                                Height="40"
+                                Width="40"></Image>
+                        <Label  DockPanel.Dock="Left"
+                                Foreground="#00B4FF"
+                                VerticalAlignment="Center">EVALUATE</Label>
+                    </DockPanel>
+                </s:SurfaceButton>
+                <s:SurfaceButton DockPanel.Dock="Right"
+                                 Name="Close"
+                                 Background="#282828"
+                                 Height="50"
+                                 Padding="0"
+                                 Margin="10,0,50,0"
+                                 Click="Close_Click">
+                    <DockPanel>
+                        <Image  DockPanel.Dock="Left"
+                                Source="/ASG.UI;component/Resources/exit.png"
+                                Height="40"
+                                Width="40"></Image>
+                        <Label  DockPanel.Dock="Left"
+                                Foreground="#00B4FF"
+                                VerticalAlignment="Center">EXIT</Label>
+                    </DockPanel>
+                </s:SurfaceButton>
+                <s:SurfaceButton  DockPanel.Dock="Right"
+                                  Name="LoadProject"
+                                  Click="LoadProject_Click"
+                                  Margin="10,0"
+                                  Foreground="White"
+                                  Height="50"
+                                  Padding="0"
+                                  Background="#282828">
+                    <DockPanel>
+                        <Image  DockPanel.Dock="Left"
+                                Source="/ASG.UI;component/Resources/filesys.ico"
+                                Height="50"
+                                Width="40"></Image>
+                        <Label  DockPanel.Dock="Left"
+                                Foreground="White"
+                                VerticalAlignment="Center">LOAD</Label>
+                    </DockPanel>
+                </s:SurfaceButton>
+                <s:SurfaceButton DockPanel.Dock="Right"
+                                 Name="SaveProject"
+                                 Click="SaveProject_Click"
+                                 Margin="10,0"
+                                 Foreground="White"
+                                 Background="#282828"
+                                 Padding="0"
+                                 Height="50">
+                    <DockPanel>
+                        <Image  DockPanel.Dock="Left"
+                                Source="/ASG.UI;component/Resources/save.ico"
+                                Height="50"
+                                Width="40"></Image>
+                        <Label  DockPanel.Dock="Left"
+                                Foreground="White"
+                                VerticalAlignment="Center">SAVE</Label>
+                    </DockPanel>
+                </s:SurfaceButton>
+            </DockPanel>
+        </s:ScatterViewItem>
+        <!--BUTTONS ON THE LEFT  -->
+        <s:ScatterViewItem Name="LeftMenu"
+                           Orientation="0"
+                           Background="#282828"
+                           Padding="0"
+                           ShowsActivationEffects="False"
+                           CanMove="False"
+                           CanRotate="False"
+                           CanScale="False"
+                           BorderBrush="{x:Null}">
+            <StackPanel Orientation="Vertical" Margin="0,50">
+                <s:SurfaceToggleButton Margin="0,0,5,20"
+                                       Padding="0"
+                                       BorderBrush="{x:Null}"
+                                       Width="45"
+                                       Name="Gesture"
+                                       Background="Transparent"
+                                       HorizontalAlignment="Right"
+                                       Click="Gesture_Click">
+                    <Image Source="/ASG.UI;component/Resources/pinchtz.ico"
+                           Height="45"
+                           Width="45"></Image>
+                </s:SurfaceToggleButton >
+                <s:SurfaceToggleButton Name="Eraser"
+                                       Margin="0,0,5,20"
+                                       Padding="0"
+                                       BorderBrush="{x:Null}"
+                                       Background="Transparent"
+                                       Click="Eraser_Click"
+                                       HorizontalAlignment="Right">
+                    <Image Source="/ASG.UI;component/Resources/clear.png"
+                           Height="45"
+                           Width="45"></Image>
+                </s:SurfaceToggleButton>
+                <s:SurfaceToggleButton Name="Select"
+                                       Click="Select_Click"
+                                       Background="Transparent"
+                                       Margin="0,0,5,20"
+                                       Padding="0,0,0,0"
+                                       BorderBrush="{x:Null}"
+                                       HorizontalAlignment="Right">
+                    <Image  Source="/ASG.UI;component/Resources/cut.png"
+                            Height="45"
+                            Width="45"></Image>
+                </s:SurfaceToggleButton>
+                <s:SurfaceButton Name="Undo"
+                                 Click="Undo_Click"
+                                 Background="Transparent"
+                                 Margin="0,0,5,20"
+                                 Padding="0,0,0,0"
+                                 BorderBrush="{x:Null}"
+                                 HorizontalAlignment="Right">
+                    <Image Source="/ASG.UI;component/Resources/undo.png"
+                           Height="45"
+                           Width="45"></Image>
+                </s:SurfaceButton>
+                <s:SurfaceButton Name="LoadImage"
+                                 Click="LoadImage_Click"
+                                 Background="Transparent"
+                                 Margin="0,0,5,20"
+                                 Padding="0,0,0,0"
+                                 BorderBrush="{x:Null}"
+                                 HorizontalAlignment="Right">
+                    <Image Source="/ASG.UI;component/Resources/pictures.ico"
+                           Height="45"
+                           Width="45"></Image>
+                </s:SurfaceButton>
+                <s:SurfaceButton  Name="ClearImage"
+                                  Click="ClearImage_Click"
+                                  Background="Transparent"
+                                  Margin="0,0,5,20"
+                                  Padding="0,0,0,0"
+                                  BorderBrush="{x:Null}"
+                                  HorizontalAlignment="Right">
+                    <Image Source="/ASG.UI;component/Resources/erase.png"
+                           Height="45"
+                           Width="45"
+                           HorizontalAlignment="Right"></Image>
+                </s:SurfaceButton>
+                <StackPanel Margin="0,0,5,20"
+                            Name="ColorWheelContainer"
+                            Orientation="Vertical"
+                            Width="Auto"
+                            Height="Auto"
+                            Tag="Fixed"
+                            Background="#282828">
+                    <Grid Width="45"
+                          Height="45"
+                          Margin="30,0,0,0">
+                        <!-- Current Color Button -->
+                        <Ellipse Name="CurrentColor"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 Stroke="White"
+                                 StrokeThickness="3"
+                                 Fill="Black"
+                                 MouseDown="OnCurrentColorMouseDown"
+                                 MouseUp="OnColorWheelMouseUp"
+                                 TouchEnter="OnCurrentColorTouchDown" />
+                        <!-- Color Wheel -->
+                        <Image Name="ColorWheel"
+                               RenderTransformOrigin="-1, 0.5"
+                               Source="Resources\gradient.png"
+                               Visibility="Hidden"
+                               MouseDown="OnColorWheelMouseDown"
+                               MouseUp="OnColorWheelMouseUp"
+                               TouchEnter="OnColorWheelTouchDown">
+                            <Image.RenderTransform>
+                                <!-- Transform it so it extends beyond the borders of the grid -->
+                                <ScaleTransform ScaleX="6"
+                                                ScaleY="6" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </s:ScatterViewItem>
+        <!-- TRASH CAN -->
+        <s:ScatterViewItem Name="TrashContainer"
+                           Width="50"
+                           Height="721"
+                           Tag="Fixed"
+                           CanMove="False"
+                           CanRotate="False"
+                           CanScale="False"
+                           Background="#282828"
+                           Margin="0"
+                           Visibility="Visible"
+                           BorderThickness="2"
+                           ShowsActivationEffects="False"
+                           Padding="0">
+            <Image Source="/ASG.UI;component/Resources/trash.png"
+                   Height="50"
+                   Width="50"
+                   HorizontalAlignment="Center" />
+        </s:ScatterViewItem>
+        <!--BUTTONS ON THE TOP  -->
+        <!--BUTTONS ON THE BOTTOM  -->
+        <s:ScatterViewItem Name="BottomMenu"
+                           Orientation="0"
+                           Width="Auto"
+                           Height="Auto"
+                           Tag="Fixed"
+                           CanMove="False"
+                           CanRotate="False"
+                           CanScale="False"
+                           BorderThickness="0"
+                           Background="#282828"
+                           BorderBrush="{x:Null}">
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <s:SurfaceButton Margin="5,0"
+                                 Name="BottomButton"
+                                 Foreground="White"
+                                 Background="#282828"
+                                 Content="LIST"
+                                 VerticalContentAlignment="Top"
+                                 Click="Thumbnails_Click"></s:SurfaceButton>
+                <s:SurfaceButton Margin="10,0"
+                                 Name="NewPage"
+                                 Foreground="White"
+                                 Content="NEW"
+                                 Background="#282828"
+                                 VerticalContentAlignment="Top"
+                                 Click="NewPage_Click"></s:SurfaceButton>
+                <s:SurfaceButton Margin="10,0"
+                                 Name="DuplicatePage"
+                                 Foreground="White"
+                                 Content="DUPLICATE"
+                                 Background="#282828"
+                                 VerticalContentAlignment="Top"
+                                 Click="DuplicatePage_Click"></s:SurfaceButton>
+                <s:SurfaceButton Margin="10,0"
+                                 Name="RemoveButton"
+                                 Foreground="White"
+                                 Content="REMOVE"
+                                 Background="#282828"
+                                 VerticalContentAlignment="Top"
+                                 Click="RemoveButton_Click"></s:SurfaceButton>
+                <s:SurfaceButton  Name="lefthelp"
+                                  Margin="0,10"
+                                  VerticalContentAlignment="Top"
+                                  Padding="0"
+                                  DockPanel.Dock="Left"
+                                  Foreground="Black"
+                                  Click="lefthelp_TouchClick"
+                                  Background="Transparent">
+                    <Image Source="/ASG.UI;component/Resources/left.png"
+                           Width="45"
+                           Height="45"></Image>
+                </s:SurfaceButton>
+                <TextBlock Name="PageNumber"
+                           Background="White"
+                           Foreground="Black"
+                           Text="1/1"
+                           TextAlignment="Center"
+                           Width="50"
+                           Height="40"
+                           VerticalAlignment="Top"
+                           Margin="0,10"></TextBlock>
+                <s:SurfaceButton Name="righthelp"
+                                 VerticalContentAlignment="Top"
+                                 Margin="0,10"
+                                 DockPanel.Dock="Right"
+                                 Foreground="Black"
+                                 Padding="0"
+                                 Click="righthelp_TouchClick"
+                                 Background="Transparent">
+                    <Image Source="/ASG.UI;component/Resources/right.png"
+                           Width="45"
+                           Height="45"></Image>
+                </s:SurfaceButton>
+                <s:SurfaceButton Margin="10,0"
+                                 Name="Record"
+                                 Foreground="White"
+                                 Content="RECORD GESTURE"
+                                 Background="#282828"
+                                 VerticalContentAlignment="Top"
+                                 Click="Record_Click"></s:SurfaceButton>
+            </StackPanel>
+        </s:ScatterViewItem>
+        <s:ScatterViewItem Name="TextContainer"
+                           Visibility="Hidden"
+                           Orientation="0"
+                           CanMove="False"
+                           CanRotate="False"
+                           CanScale="False"
+                           BorderThickness="0"
+                           Background="Transparent"
+                           BorderBrush="Transparent"
+                           Width="800"
+                           Height="Auto">
+            <TextBlock Height="Auto"
+                       HorizontalAlignment="Center"
+                       Name="messageLabel"
+                       Text=""
+                       VerticalAlignment="Center"
+                       Background="Transparent"
+                       Foreground="Black"
+                       FontSize="20"
+                       TextTrimming="WordEllipsis"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center" />
+        </s:ScatterViewItem>
+        <s:ScatterViewItem Style="{StaticResource ScatterViewItemStyle}"
+                           IsTopmostOnActivation="False"
+                           Name="SelectorContainer"
+                           Tag="Fixed"
+                           ZIndex="0"
+                           CanMove="True"
+                           CanRotate="False"
+                           CanScale="True"
+                           Visibility="Hidden"
+                           Opacity="0.7"
+                           TouchEnter="SelectorContainer_TouchEnter"
+                           IsManipulationEnabled="True"
+                           ContainerManipulationCompleted="SelectorContainer_ManipulationCompleted">
+            <Viewbox Name="Selector">
+                <s:SurfaceInkCanvas Name="InkSelector"
+                                    Background="Transparent"
+                                    EditingMode="None" />
+            </Viewbox>
+        </s:ScatterViewItem>
+    </s:ScatterView>
+</UserControl>
+
+	

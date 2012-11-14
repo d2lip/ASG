@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0326E9D-B2CA-4B38-B85E-7D1E91E2B438}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Framework</AppDesignerFolder>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LanguageParser.TestApp</RootNamespace>
+    <AssemblyName>LanguageParser.TestApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="TouchToolkit\Extensions\Return Types\TouchCount.cs" />
+    <Compile Include="TouchToolkit\Extensions\Return Types\TouchCountCalculator.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TouchToolkit\Extensions\Primitive Conditions\Rule1.cs" />
+    <Compile Include="TouchToolkit\Extensions\Primitive Conditions\Rule1Validator.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="My Application.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Application.xaml.cs">
+      <DependentUpon>My Application.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\gestures.gx" />
+    <EmbeddedResource Include="bin\rulenames.gx" />
+    <None Include="app.config" />
+    <None Include="TouchToolkit\Extensions\Language Syntax\PrimitiveConditions.pd" />
+    <None Include="TouchToolkit\Extensions\Language Syntax\PrimitiveConditionSyntax.pd" />
+    <None Include="TouchToolkit\Extensions\Language Syntax\ReturnTypes.pd" />
+    <None Include="TouchToolkit\Lib\GDL.mg" />
+    <None Include="TouchToolkit\Lib\LanguageParser.vshost.exe.manifest" />
+    <None Include="TouchToolkit\Gesture Definitions\doubleTap.g" />
+    <None Include="TouchToolkit\Gesture Definitions\drag.g" />
+    <None Include="TouchToolkit\Gesture Definitions\lasso.g" />
+    <None Include="TouchToolkit\Gesture Definitions\left.g" />
+    <None Include="TouchToolkit\Gesture Definitions\line.g" />
+    <None Include="TouchToolkit\Gesture Definitions\pinch.g" />
+    <None Include="TouchToolkit\Gesture Definitions\right.g" />
+    <None Include="TouchToolkit\Gesture Definitions\rotate.g" />
+    <None Include="TouchToolkit\Gesture Definitions\tap.g" />
+    <None Include="TouchToolkit\Gesture Definitions\zoom.g" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TouchToolkit\Extensions\ReadMe.txt" />
+    <Content Include="TouchToolkit\Lib\LanguageParser.pdb" />
+    <Content Include="TouchToolkit\Lib\LanguageParser.vshost.exe" />
+    <Content Include="TouchToolkit\Lib\LanguageParser.exe" />
+    <Content Include="TouchToolkit\Lib\MGraphXamlReader.dll" />
+    <Content Include="TouchToolkit\Lib\MGraphXamlReader.pdb" />
+    <Content Include="TouchToolkit\Lib\Microsoft.M.dll" />
+    <Content Include="TouchToolkit\Lib\Microsoft.Oslo.Internal.dll" />
+    <Content Include="TouchToolkit\Lib\System.Dataflow.dll" />
+    <Content Include="TouchToolkit\Lib\TouchToolkit.Framework.dll" />
+    <Content Include="TouchToolkit\Lib\TouchToolkit.Framework.pdb" />
+    <Content Include="TouchToolkit\Lib\TouchToolkit.GestureProcessor.dll" />
+    <Content Include="TouchToolkit\Lib\TouchToolkit.GestureProcessor.pdb" />
+    <Content Include="TouchToolkit\Lib\Xaml.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\TouchToolkit.Framework.csproj">
+      <Project>{0E89118D-B58A-48DB-A05D-0ADBBB145195}</Project>
+      <Name>TouchToolkit.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gestures\TouchToolkit.GestureProcessor.csproj">
+      <Project>{61A73B75-7404-4A80-9953-80AE47BA05DD}</Project>
+      <Name>TouchToolkit.GestureProcessor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>CD ..\..\TouchToolkit
+Lib\LanguageParser.exe "..\\" $(OutDir) $(ProjectName)</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

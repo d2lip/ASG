@@ -1,0 +1,18 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="GestureServiceSoap" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://g.shahed.me/gestureservice.asmx" binding="basicHttpBinding"
+                bindingConfiguration="GestureServiceSoap" contract="DataService.GestureServiceSoap"
+                name="GestureServiceSoap" />
+        </client>
+        <extensions />
+    </system.serviceModel>
+</configuration>

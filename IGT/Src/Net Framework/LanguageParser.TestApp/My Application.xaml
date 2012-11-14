@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="LanguageParser.TestApp.My_Application"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Canvas Name="LayoutRoot">
+        <Image Name="image1" Source="pack://application:,,,/Images/Hydrangeas.jpg" Height="110" Width="130" Canvas.Left="30" Canvas.Top="185" />
+        <Image Canvas.Left="210" Canvas.Top="185" Height="110" Name="image2" Source="pack://application:,,,/Images/Jellyfish.jpg" Width="130" />
+        <Image Canvas.Left="394" Canvas.Top="185" Height="110" Name="image3" Source="pack://application:,,,/Images/Koala.jpg" Width="130" />
+        <Image Canvas.Left="587" Canvas.Top="185" Height="110" Name="image4" Source="pack://application:,,,/Images/Lighthouse.jpg" Width="130" />
+    </Canvas>
+</UserControl>

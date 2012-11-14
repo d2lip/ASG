@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{632F8FF0-7EA4-4A7C-81FA-BEC0202FEDF9}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>SurfaceWrapper</RootNamespace>
+    <AssemblyName>SurfaceWrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Microsoft.Surface" />
+    <Reference Include="Microsoft.Surface.Presentation" />
+    <Reference Include="Microsoft.Surface.Presentation.Generic" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASG.xaml.cs">
+      <DependentUpon>ASG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ASGEvents.xaml.cs">
+      <DependentUpon>ASGEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ASGHelper.cs" />
+    <Compile Include="ASGProperties.xaml.cs">
+      <DependentUpon>ASGProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ASGThumbnails.xaml.cs">
+      <DependentUpon>ASGThumbnails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LoadDialog.xaml.cs">
+      <DependentUpon>LoadDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NavigationPageDialog.xaml.cs">
+      <DependentUpon>NavigationPageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SaveDialog.xaml.cs">
+      <DependentUpon>SaveDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewCanvas.xaml.cs">
+      <DependentUpon>PreviewCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SurfaceTouchDevice.cs" />
+    <Compile Include="SurfaceWindow1.xaml.cs">
+      <DependentUpon>SurfaceWindow1.xaml</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SurfaceWrapper.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ASG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ASGEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ASGProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ASGThumbnails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\LoadDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\NavigationPageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SaveDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PreviewCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SurfaceWindow1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Net Framework\Framework\TouchToolkit.Framework.csproj">
+      <Project>{0E89118D-B58A-48DB-A05D-0ADBBB145195}</Project>
+      <Name>TouchToolkit.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\Net Framework\Gestures\TouchToolkit.GestureProcessor.csproj">
+      <Project>{61A73B75-7404-4A80-9953-80AE47BA05DD}</Project>
+      <Name>TouchToolkit.GestureProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\Net Framework\SurfaceApplication\IGT.csproj">
+      <Project>{687963FD-538E-4946-BFD6-C808CF0D26FB}</Project>
+      <Name>IGT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ActiveStoryTouch.DataModel\ActiveStoryTouch.DataModel.csproj">
+      <Project>{65B855AC-9A2D-44E9-B7AC-128E2E44D069}</Project>
+      <Name>ActiveStoryTouch.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ActiveStoryTouch\ActiveStoryTouch.UI.csproj">
+      <Project>{60A16718-BBD8-4B5B-8CA8-F5FABD6A8DDC}</Project>
+      <Name>ActiveStoryTouch.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\AddPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\BigBrushSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\CloseButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_Checkbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_ListBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_RadioButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Control_TextBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\CopyPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\DeletePage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\DummyThumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\EraserSizeImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\export_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\ExportAllPages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\ExportPageAsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\ImportImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Label.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\NewProject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\OpenProject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\pen_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\PointEraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\SmallBrushSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\StrokeEraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\VSObject_Event.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\wizard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Zoom_In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Zoom_Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\hand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\load.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\scissors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gesture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\image.png" />
+    <Resource Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorWheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\left.png" />
+    <Resource Include="Resources\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gradientlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gradient.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

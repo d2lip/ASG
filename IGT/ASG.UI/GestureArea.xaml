@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="ASG.UI.GestureArea"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:s="http://schemas.microsoft.com/surface/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+ 
+        <Grid Name="Host" >
+            <s:ElementMenu
+                  ActivationMode="HostInteraction"
+                  HorizontalAlignment="Right"  Name="Menu"
+                     ActivationHost="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type s:ScatterViewItem}}}"
+                  VerticalAlignment="Top" >
+                <s:ElementMenuItem Name="ImageItem" Header="Image"                              
+                                    Background="#282828" Foreground="White">
+                    <s:ElementMenuItem.Icon>
+                        <Image Source="/ASG.UI;component/Resources/pictures.ico" />
+                    </s:ElementMenuItem.Icon>
+                </s:ElementMenuItem>
+                <s:ElementMenuItem Name="GestureItem" Header="Gesture"  
+                                   Background="#282828" Foreground="White">
+                    <s:ElementMenuItem.Icon>
+                        <Image Source="/ASG.UI;component/Resources/pinchtz.ico" />
+                    </s:ElementMenuItem.Icon>
+                </s:ElementMenuItem>
+            </s:ElementMenu>
+        <Image Name="BackgroundImage"  />
+        </Grid>
+
+</UserControl>

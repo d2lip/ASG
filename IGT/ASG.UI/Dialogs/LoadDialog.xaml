@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ASG.UI.Dialogs.LoadDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="http://schemas.microsoft.com/surface/2008">
+    <Grid  Background="#282828">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"
+                           MaxHeight="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20*"
+                           MaxHeight="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"
+                   LastChildFill="False">
+            <Label  Name="Title"
+                    DockPanel.Dock="Left"
+                    Content="LOAD PROJECT"
+                    Foreground="White"
+                    FontSize="25"></Label>
+            <s:SurfaceButton DockPanel.Dock="Right"
+                             Name="Close"
+                             FontSize="20"
+                             Click="Close_Click"
+                             Foreground="#00B4FF"
+                             Background="#282828"
+                             HorizontalAlignment="Right"
+                             FontWeight="Normal"
+                             Content="CLOSE"
+                             Width="Auto"></s:SurfaceButton>
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <s:SurfaceListBox Name="ProjectList"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              DockPanel.Dock="Top"></s:SurfaceListBox>
+        </DockPanel>
+        <DockPanel Grid.Row="2"
+                   LastChildFill="False">
+            <s:SurfaceButton DockPanel.Dock="Right"
+                             Content="LOAD"
+                             Width="Auto"
+                             Height="Auto"
+                             Name="LoadButton"
+                             Foreground="#00B4FF"
+                             FontSize="25"
+                             Background="#282828"></s:SurfaceButton>
+        </DockPanel>
+    </Grid>
+</UserControl>

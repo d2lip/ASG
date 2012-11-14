@@ -1,0 +1,1 @@
+Please run the "Compile Gesture Definitions.bat" when you add or edit the gesture definitions.

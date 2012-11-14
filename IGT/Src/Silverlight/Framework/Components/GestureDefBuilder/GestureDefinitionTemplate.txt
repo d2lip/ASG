@@ -1,0 +1,10 @@
+﻿name: <gesture-name>
+
+validation state
+<validationstate>
+    
+condition
+<condition>
+
+return
+Info:no-return-type-specified

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="MyApplication.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Canvas x:Name="LayoutRoot" Background="White">
+
+        <Rectangle x:Name="rectangle01" Fill="LightBlue" Height="100" Width="150" Canvas.Left="21" Canvas.Top="72" Opacity=".8" />
+
+        <Rectangle x:Name="rectangle02" Fill="LightGreen" Height="100" Width="150" Canvas.Left="337" Canvas.Top="173" Opacity=".8" />
+
+    </Canvas>
+</UserControl>

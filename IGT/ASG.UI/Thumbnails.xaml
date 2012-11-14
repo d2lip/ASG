@@ -1,0 +1,33 @@
+<UserControl x:Class="ASG.UI.Thumbnails" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:s="http://schemas.microsoft.com/surface/2008"
+            IsVisibleChanged="SurfaceUserControl_IsVisibleChanged">
+    <Grid>
+
+        <!--Page list box-->
+        <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DockPanel DockPanel.Dock="Top" >
+                <Label DockPanel.Dock="Left"   Foreground="Black"
+                                       FontSize="25">Low-fidelity prototype pages</Label>
+                <s:SurfaceButton DockPanel.Dock="Right" Name="Close" Click="Close_Click" 
+                                 FontSize="25" Foreground="#00B4FF" Background="#282828" 
+                                 HorizontalAlignment="Right"   Content="Cancel" Width="100"></s:SurfaceButton>
+
+            </DockPanel>
+           
+            
+
+            <s:SurfaceListBox x:Name="PagesListBox" Height="Auto" BorderBrush="{x:Null}" Width="Auto" HorizontalAlignment="Stretch" 
+                              VerticalAlignment="Stretch" ItemsPanel="{DynamicResource HorizontalListBoxItemsPanelTemplate}" 
+                              ItemTemplate="{DynamicResource PageListBoxDataTemplate}"                             
+                              ItemContainerStyle="{DynamicResource ListBoxItemStyle}" 
+                              Foreground="White" SelectionChanged="PagesListBox_SelectionChanged">
+
+
+            </s:SurfaceListBox>
+
+        </DockPanel>
+
+    </Grid>
+</UserControl>

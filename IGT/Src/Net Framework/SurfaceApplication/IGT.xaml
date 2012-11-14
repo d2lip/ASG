@@ -1,0 +1,191 @@
+<UserControl x:Class="SurfaceApplication.IGT"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:s="http://schemas.microsoft.com/surface/2008">
+    <Canvas Name="LayoutRoot"
+            Background="#282828"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Height="Auto"
+            Width="Auto">
+        <Grid Name="LayoutGrid"
+              Background="#282828"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.067*"></RowDefinition>
+                <RowDefinition Height="0.62*"></RowDefinition>
+                <RowDefinition Height="0.077*"></RowDefinition>
+                <RowDefinition Height="0.25*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="GESTURE RECORDER"
+                   Foreground="#00B4FF"
+                   Name="label2"
+                   FontSize="30"
+                   HorizontalAlignment="Stretch"
+                   HorizontalContentAlignment="Center"
+                   Background="#282828" />
+            <Rectangle  Name="testArea"
+                        Grid.Row="1"
+                        TouchEnter="testArea_TouchEnter"
+                        Width="{Binding Path=Parent.ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Height="{Binding Path=Parent.ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        TouchLeave="testArea_TouchLeave"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Fill="#00B4FF"
+                        Visibility="Visible"
+                        Opacity="0.3" />
+            <s:SurfaceInkCanvas  Background="Gray"
+                        Grid.Row="1"
+                        Width="Auto"
+                        Height="Auto"
+                        Name="gesture"
+                        PreviewTouchDown="gesture_ContactDown"
+                        TouchLeave="gesture_ContactLeave"
+                        PreviewTouchMove="gesture_ContactChanged">
+                <s:SurfaceInkCanvas.DefaultDrawingAttributes>
+                    <DrawingAttributes Height="10"
+                                       Width="10"
+                                       Color="White" />
+                </s:SurfaceInkCanvas.DefaultDrawingAttributes>
+            </s:SurfaceInkCanvas>
+            <s:SurfaceButton Grid.Row="2"
+                             Width="Auto"
+                             Height="Auto"
+                             HorizontalContentAlignment="Center"
+                             Name="RecordButton"
+                             Click="Record_Click"
+                             FontSize="30"
+                             Foreground="White"
+                             Background="#282828">
+                <DockPanel>
+                    <Image Height="40"
+                           Width="40"
+                           Name="RecordImage"
+                           DockPanel.Dock="Left"
+                           Source="/IGT;component/Resources/recordIcon.png"
+                           VerticalAlignment="Top"></Image>
+                    <TextBlock Name="RecordText"
+                               DockPanel.Dock="Right"
+                               VerticalAlignment="Top">RECORD</TextBlock>
+                </DockPanel>
+            </s:SurfaceButton>
+            <Grid Background="#282828"
+                  Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.33*" />
+                    <ColumnDefinition Width="0.34*" />
+                    <ColumnDefinition Width="0.33*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                    </Grid.RowDefinitions>
+                    <s:SurfaceToggleButton Grid.Row="0"
+                                           VerticalContentAlignment="Top"
+                                           Background="#282828"
+                                           Name="OptionsButton"
+                                           Content="OPTIONS"
+                                           Click="OptionsButton_Click"
+                                           Foreground="White"
+                                           FontSize="30"></s:SurfaceToggleButton>
+                    <s:SurfaceToggleButton Grid.Row="1"
+                                           VerticalContentAlignment="Top"
+                                           Background="#282828"
+                                           Name="RulesButton"
+                                           Content="SAMPLES"
+                                           Click="RulesButton_Click"
+                                           Foreground="White"
+                                           FontSize="30"></s:SurfaceToggleButton>
+                </Grid>
+                <DockPanel Grid.Column="1"
+                           LastChildFill="False"
+                           Margin="20">
+                    <Label Content="Gesture name"
+                           HorizontalContentAlignment="Center"
+                           DockPanel.Dock="Top"
+                           HorizontalAlignment="Center"
+                           Name="label1"
+                           VerticalAlignment="Top"
+                           Foreground="White"
+                           FontSize="20" />
+                    <s:SurfaceTextBox Name="GestureName"
+                                      DockPanel.Dock="Top"
+                                      HorizontalAlignment="Stretch"
+                                      Text="type name..."
+                                      TextAlignment="Center"
+                                      TextWrapping="Wrap"
+                                      FontWeight="Normal"
+                                      FontSize="25"
+                                      VerticalAlignment="Center"
+                                      VerticalContentAlignment="Center"
+                                      HorizontalContentAlignment="Center" />
+                    <s:SurfaceButton  Background="#282828"
+                                      DockPanel.Dock="Top"
+                                      HorizontalAlignment="Stretch"
+                                      HorizontalContentAlignment="Center"
+                                      Content="LEAVE"
+                                      FontSize="30"
+                                      Foreground="#00B4FF"
+                                      Name="LeaveButton"
+                                      Click="LeaveButton_Click" />
+                </DockPanel>
+                <Grid  Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                    </Grid.RowDefinitions>
+                    <s:SurfaceButton VerticalContentAlignment="Top"
+                                     Grid.Row="0"
+                                     Content="SAVE"
+                                     Name="CompileButton"
+                                     Click="CompileButton_Click"
+                                     FontSize="30"
+                                     Foreground="White"
+                                     Background="#282828"
+                                     HorizontalContentAlignment="Center"></s:SurfaceButton>
+                    <s:SurfaceButton VerticalContentAlignment="Top"
+                                     Grid.Row="1"
+                                     Content="TRY"
+                                     Name="TryButton"
+                                     Click="TryButton_Click"
+                                     FontSize="30"
+                                     Foreground="White"
+                                     Background="#282828"
+                                     HorizontalContentAlignment="Center" />
+                </Grid>
+            </Grid>
+            <TextBlock Grid.Row="1"
+                       Name="messageLabel"
+                       Text=""
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Background="{x:Null}"
+                       Foreground="White"
+                       FontSize="22"
+                       TextTrimming="WordEllipsis"
+                       TextWrapping="Wrap"
+                       Panel.ZIndex="1"
+                       TextAlignment="Center"
+                       Visibility="Hidden" />
+        </Grid>
+    </Canvas>
+</UserControl>

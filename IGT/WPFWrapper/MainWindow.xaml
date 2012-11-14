@@ -1,0 +1,17 @@
+﻿<Window x:Class="WPFWrapper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ASG:: Active Story Gesture" SizeToContent="WidthAndHeight"  
+         xmlns:s="http://schemas.microsoft.com/surface/2008"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Closed="Window_Closed"
+        >
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid>
+        
+        <Canvas Name="mainCanvasRoot" ></Canvas>
+        
+    </Grid>
+</Window>

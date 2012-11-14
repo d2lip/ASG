@@ -1,0 +1,39 @@
+<UserControl x:Class="ASG.UI.EventsGesture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" 
+             MinHeight="350" MinWidth="300">
+
+
+    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+        
+        <DockPanel DockPanel.Dock="Bottom">
+            <Label DockPanel.Dock="Left" Content="Didn't find the gesture?" FontSize="25"></Label>
+            <s:SurfaceButton DockPanel.Dock="Right" 
+                             Name="IGT" Click="IGT_Click" FontSize="25" Width="Auto" HorizontalAlignment="Right"
+                             Foreground="#00B4FF" Background="#282828"    Content="Add a custom gesture"></s:SurfaceButton>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" >
+
+            <Label DockPanel.Dock="Left" FontSize="25"   Foreground="Black" 
+                                    >Triggers</Label>
+                   
+            <s:SurfaceButton DockPanel.Dock="Right" Name="Close" Click="Close_Click"
+                         FontSize="25" Foreground="#00B4FF" 
+                                     Background="#282828" HorizontalAlignment="Right"
+                                       Content="close" Width="100"></s:SurfaceButton>
+        </DockPanel>
+        <s:SurfaceListBox DockPanel.Dock="Bottom" Name="TriggersGrid" BorderThickness="1">
+        </s:SurfaceListBox>
+        
+        
+        <TreeView x:Name="ObjectsTreeView" Width="0" Height="0" SelectedItemChanged="ObjectsTreeView_SelectedItemChanged" Visibility="Hidden">
+            <TreeView.Items>
+                <TreeViewItem Header="Test">
+                    <TreeViewItem Header="SubItem"></TreeViewItem>
+                </TreeViewItem>
+            </TreeView.Items>
+        </TreeView>
+
+
+
+    </DockPanel>
+</UserControl>

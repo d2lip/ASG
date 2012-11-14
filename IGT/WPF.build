@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project   name="TouchToolkit" default="test">
+<property value="TouchToolkit" name="project" />
+    <!-- Location of the APDT Project and the AP server -->
+    <property name="build.dir" value="C:\.hudson\jobs\${project} - WPF\workspace"/>
+    
+ <!-- Start by cleaning the build area -->
+  <target name="clean" description="remove all build products" >
+    
+  <delete dir="build" if="${directory::exists('build.dir')}" />
+  </target>
+  <!-- Create a build area -->
+  <target name="init" depends="clean">
+    <mkdir dir="build"/>
+  </target>
+  <target name="compile" depends="init">
+      <exec
+      program="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\msbuild.exe"
+      commandline='"${build.dir}/Src/Solution files/WPF 4.0 Application.sln"'/>
+</target>
+
+
+ <target name="test" depends="compile"> 
+    <delete dir="TestResults"/>
+    <mkdir dir="TestResults"/>
+    <exec
+        program="C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe">
+        <arg value='/testmetadata:"${build.dir}/Src/Solution files/WPF 4.0 Application.vsmdi"' /> 
+        <arg value="/resultsfile:TestResults\testResults.trx" />
+    </exec>
+ </target>
+
+</project>

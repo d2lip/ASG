@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMART Board Application", "SMART Board Application\SMART Board Application.csproj", "{390FC535-4E03-4643-BA1B-FE7F85DFD092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchToolkit.GestureProcessor", "..\..\Net Framework\Gestures\TouchToolkit.GestureProcessor.csproj", "{61A73B75-7404-4A80-9953-80AE47BA05DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchToolkit.Framework", "..\..\Net Framework\Framework\TouchToolkit.Framework.csproj", "{0E89118D-B58A-48DB-A05D-0ADBBB145195}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Debug|x86.ActiveCfg = Debug|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Debug|x86.Build.0 = Debug|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Release|Any CPU.ActiveCfg = Release|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Release|Mixed Platforms.Build.0 = Release|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Release|x86.ActiveCfg = Release|x86
+		{390FC535-4E03-4643-BA1B-FE7F85DFD092}.Release|x86.Build.0 = Release|x86
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{61A73B75-7404-4A80-9953-80AE47BA05DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0E89118D-B58A-48DB-A05D-0ADBBB145195}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

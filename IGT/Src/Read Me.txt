@@ -1,0 +1,14 @@
+The toolkit can be used in both Silverlight and WPF 4.0 applications. 
+
+The source folder contains two separate sets of projects (i.e. Silverlight & .NET Framework) but the actual source code is in one project and the other project has them as linked files. So we can easily compile the source code for either Silverlight or WPF 4.0. Following table explains how the codes are organized among different projects:
+
+----------------------------------------------------------
+Project name    | Silverlight      | Full .NET Framework |
+----------------|------------------|---------------------|
+Framework       | Source files     |      Linked file    |
+Gestures        | Source files     |      Linked file    |
+TestApplication | SL version       |      WPF version    |
+LanguageParser  | linked batch file|      Source files   |
+
+
+You may find more details in the project website at http://touchtoolkit.codeplex.com

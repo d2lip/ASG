@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="TestApplication.TestControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FF4B4A4A">
+    <Canvas Name="LayoutMain" Background="#FF4B4A4A" >
+        <Grid Name ="LayoutGrid" Background="#FF4B4A4A">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="9*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+
+
+
+            <Label Grid.Column="0" Grid.Row="0"  Content="Gesture canvas" Foreground="Black"  Name="label2" FontSize="20" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#FFC4C432" />
+            <Canvas Grid.Column="0" Grid.Row="1" Width="Auto" Height="Auto" Name="LayoutRoot"  Background="White" TouchDown="rectangle1_TouchDown" TouchMove="rectangle1_TouchMove" TouchUp="rectangle1_TouchUp" />
+           
+            <Button  Grid.Column="0" Grid.Row="2"   Width="Auto" Height="Auto" Content="Record gesture"  Name="button1" Click="button1_Click" FontSize="20" Foreground="#FFC4C432" Background="#FF4B4A4A" FontWeight="Normal" />
+
+            <TreeView   Grid.Column="1" Grid.Row="1" Name="gestures" PreviewKeyDown="gestures_PreviewKeyDown" />
+
+            <Button  Grid.Column="1" Grid.Row="2"   Width="Auto" Height="Auto" Content="Generate Rule" Name="button2" Click="button2_Click" Foreground="#FFC4C432" Background="#FF4B4A4A" FontSize="20" FontWeight="Normal" HorizontalContentAlignment="Left" />
+
+            <TextBox  Grid.Column="1" Grid.Row="3"  Name="rules"  IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+
+            <GroupBox Grid.Column="0" Grid.Row="3"  Width="Auto" Height="Auto" Header=""  Name="groupBox1" FontSize="20" Foreground="#FFC4C432" Background="#FF4B4A4A"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" BorderBrush="#FF4B4A4A">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230" />
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox Content="Break gesture into steps" FontSize="20" FontWeight="Normal" Foreground="#FFC4C432" Height="34" IsChecked="True" Name="breakGesture" Width="268" Grid.ColumnSpan="2" Margin="66,8" />
+                    <Label Grid.Row="1" Content="Matching accuracy:" Height="44" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Width="183" Foreground="#FFC4C432"  />
+                    <TextBox Grid.Row="1" Margin="210,0,0,0" Name="accuracy" Height="31"  VerticalAlignment="Top" Text="80" MaxLength="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="58" Grid.ColumnSpan="2" />
+                    <Label  Grid.Column="1" Grid.Row="1" Margin="70,0,0,0" Content="%" Foreground="#FFC4C432" Height="44" HorizontalAlignment="Left" Name="label3" VerticalAlignment="Top" Width="45" />
+                </Grid>
+            </GroupBox>
+
+
+
+
+
+
+
+
+
+
+
+        </Grid>
+    </Canvas>
+</UserControl>

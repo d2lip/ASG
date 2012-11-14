@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://labs.shahed.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://labs.shahed.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://labs.shahed.net/">
+      <s:element name="ConnectivityCheck">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectivityCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectivityCheckResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGestureData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gestureName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gestureData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGestureDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddGestureDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsByUserResult" type="tns:ArrayOfProjectInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProjectInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProjectInfo" nillable="true" type="tns:ProjectInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProjectInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GestureNames" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGestureData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gestureName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGestureDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGestureDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsUserNameUnique">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserNameUniqueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsUserNameUniqueResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastUpdatedAt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastUpdatedAtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedAtResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConnectivityCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectivityCheck" />
+  </wsdl:message>
+  <wsdl:message name="ConnectivityCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectivityCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGestureDataSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGestureData" />
+  </wsdl:message>
+  <wsdl:message name="AddGestureDataSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGestureDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectsByUser" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGestureDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGestureData" />
+  </wsdl:message>
+  <wsdl:message name="GetGestureDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGestureDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsUserNameUniqueSoapIn">
+    <wsdl:part name="parameters" element="tns:IsUserNameUnique" />
+  </wsdl:message>
+  <wsdl:message name="IsUserNameUniqueSoapOut">
+    <wsdl:part name="parameters" element="tns:IsUserNameUniqueResponse" />
+  </wsdl:message>
+  <wsdl:message name="LastUpdatedAtSoapIn">
+    <wsdl:part name="parameters" element="tns:LastUpdatedAt" />
+  </wsdl:message>
+  <wsdl:message name="LastUpdatedAtSoapOut">
+    <wsdl:part name="parameters" element="tns:LastUpdatedAtResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestureServiceSoap">
+    <wsdl:operation name="ConnectivityCheck">
+      <wsdl:input message="tns:ConnectivityCheckSoapIn" />
+      <wsdl:output message="tns:ConnectivityCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGestureData">
+      <wsdl:input message="tns:AddGestureDataSoapIn" />
+      <wsdl:output message="tns:AddGestureDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsByUser">
+      <wsdl:input message="tns:GetProjectsByUserSoapIn" />
+      <wsdl:output message="tns:GetProjectsByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGestureData">
+      <wsdl:input message="tns:GetGestureDataSoapIn" />
+      <wsdl:output message="tns:GetGestureDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserNameUnique">
+      <wsdl:input message="tns:IsUserNameUniqueSoapIn" />
+      <wsdl:output message="tns:IsUserNameUniqueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LastUpdatedAt">
+      <wsdl:input message="tns:LastUpdatedAtSoapIn" />
+      <wsdl:output message="tns:LastUpdatedAtSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestureServiceSoap" type="tns:GestureServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConnectivityCheck">
+      <soap:operation soapAction="http://labs.shahed.net/ConnectivityCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGestureData">
+      <soap:operation soapAction="http://labs.shahed.net/AddGestureData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsByUser">
+      <soap:operation soapAction="http://labs.shahed.net/GetProjectsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGestureData">
+      <soap:operation soapAction="http://labs.shahed.net/GetGestureData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://labs.shahed.net/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserNameUnique">
+      <soap:operation soapAction="http://labs.shahed.net/IsUserNameUnique" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastUpdatedAt">
+      <soap:operation soapAction="http://labs.shahed.net/LastUpdatedAt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestureServiceSoap12" type="tns:GestureServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConnectivityCheck">
+      <soap12:operation soapAction="http://labs.shahed.net/ConnectivityCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGestureData">
+      <soap12:operation soapAction="http://labs.shahed.net/AddGestureData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsByUser">
+      <soap12:operation soapAction="http://labs.shahed.net/GetProjectsByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGestureData">
+      <soap12:operation soapAction="http://labs.shahed.net/GetGestureData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://labs.shahed.net/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserNameUnique">
+      <soap12:operation soapAction="http://labs.shahed.net/IsUserNameUnique" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastUpdatedAt">
+      <soap12:operation soapAction="http://labs.shahed.net/LastUpdatedAt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestureService">
+    <wsdl:port name="GestureServiceSoap" binding="tns:GestureServiceSoap">
+      <soap:address location="http://g.shahed.me/gestureservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestureServiceSoap12" binding="tns:GestureServiceSoap12">
+      <soap12:address location="http://g.shahed.me/gestureservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

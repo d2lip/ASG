@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CEA926B-4F66-4C30-A0C2-9CC1C421FD95}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TouchToolkit.GestureProcessor</RootNamespace>
+    <AssemblyName>TouchToolkit.GestureProcessor</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>True</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gesture Definitions\Gestures.cs" />
+    <Compile Include="Objects\Gesture.cs" />
+    <Compile Include="Objects\LanguageTokens\ValidateToken.cs" />
+    <Compile Include="Objects\PartiallyEvaluatedGestures.cs" />
+    <Compile Include="Objects\ValidateBlockResult.cs" />
+    <Compile Include="Objects\ValidationBlock.cs" />
+    <Compile Include="ReturnTypes\BoundingBox.cs" />
+    <Compile Include="ReturnTypes\BoundingBoxCalculator.cs" />
+    <Compile Include="ReturnTypes\DistanceChanged.cs" />
+    <Compile Include="ReturnTypes\DistanceChangedCalculator.cs" />
+    <Compile Include="ReturnTypes\Info.cs" />
+    <Compile Include="ReturnTypes\InfoCalculator.cs" />
+    <Compile Include="ReturnTypes\IReturnType.cs" />
+    <Compile Include="ReturnTypes\IReturnTypeCalculator.cs" />
+    <Compile Include="ReturnTypes\Position.cs" />
+    <Compile Include="ReturnTypes\PositionCalculator.cs" />
+    <Compile Include="ReturnTypes\PositionChanged.cs" />
+    <Compile Include="ReturnTypes\PositionChangedCalculator.cs" />
+    <Compile Include="ReturnTypes\ReturnTypeHelperExtensions.cs" />
+    <Compile Include="ReturnTypes\ReturnTypes.cs" />
+    <Compile Include="ReturnTypes\SlopeChanged.cs" />
+    <Compile Include="ReturnTypes\SlopeChangedCalculator.cs" />
+    <Compile Include="ReturnTypes\TouchActions.cs" />
+    <Compile Include="ReturnTypes\TouchActionsCalculator.cs" />
+    <Compile Include="ReturnTypes\TouchIDCalculator.cs" />
+    <Compile Include="ReturnTypes\TouchID.cs" />
+    <Compile Include="ReturnTypes\TouchPaths.cs" />
+    <Compile Include="ReturnTypes\TouchPathsCalculator.cs" />
+    <Compile Include="ReturnTypes\TouchPoints.cs" />
+    <Compile Include="ReturnTypes\TouchPointsCalculator.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchShape.cs" />
+    <Compile Include="PrimitiveConditions\Validators\IPrimitiveConditionValidator.cs" />
+    <Compile Include="PrimitiveConditions\Objects\IPrimitiveConditionData.cs" />
+    <Compile Include="Objects\ReturnTypeInfo.cs" />
+    <Compile Include="Objects\ReturnTypeInfoCollection.cs" />
+    <Compile Include="Feedbacks\GestureFeedbacks\IGestureFeedback.cs" />
+    <Compile Include="Feedbacks\GestureFeedbacks\HighlightSelectedArea.cs" />
+    <Compile Include="Feedbacks\TouchFeedbacks\ITouchFeedback.cs" />
+    <Compile Include="Feedbacks\TouchFeedbacks\BubblesPath.cs" />
+    <Compile Include="Exceptions\InvalidDataSetException.cs" />
+    <Compile Include="Exceptions\UnexpectedDataFormatException.cs" />
+    <Compile Include="Objects\LanguageTokens\GestureToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\LanguageTokens\LanguageToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\LanguageTokens\ReturnToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\LanguageTokens\PrimitiveConditionToken.cs" />
+    <Compile Include="Objects\FrameInfo.cs" />
+    <Compile Include="Objects\GestureInfo.cs" />
+    <Compile Include="Objects\PrimitiveConditionCollection.cs" />
+    <Compile Include="Objects\PrimitiveConditionResultCache.cs" />
+    <Compile Include="Objects\TouchInfo.cs" />
+    <Compile Include="Objects\TouchPoint2.cs" />
+    <Compile Include="Objects\ValidSetOfPoints.cs" />
+    <Compile Include="Objects\ValidSetOfPointsCollection.cs" />
+    <Compile Include="Exceptions\LanguageSyntaxErrorException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrimitiveConditions\Objects\ClosedLoop.cs" />
+    <Compile Include="PrimitiveConditions\Objects\DistanceBetweenPoints.cs" />
+    <Compile Include="PrimitiveConditions\Objects\EnclosedArea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PrimitiveConditions\Objects\IntersectTouchPath.cs" />
+    <Compile Include="PrimitiveConditions\Objects\OnSameObject.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchArea.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchDirection.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchLimit.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchPathBoundingBox.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchPathLength.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchStep.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchTime.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchState.cs" />
+    <Compile Include="PrimitiveConditions\Validators\ClosedLoopValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\DistanceBetweenPointsValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\EnclosedAreaValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\IntersectTouchPathValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\OnSameObjectValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchAreaValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchDirectionValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchLimitValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchPathBoundingBoxValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchPathLengthValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchShapeValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchStepValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchTimeValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\TouchStateValidator.cs" />
+    <Compile Include="PrimitiveConditions\Validators\RuleValidationHelper.cs" />
+    <Compile Include="Utility\Combinations\Combinations.cs" />
+    <Compile Include="Utility\Combinations\CombinatorialBase.cs" />
+    <Compile Include="Utility\CommonHelperMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\ShapeRecognizers\CircleRecognizer.cs" />
+    <Compile Include="Utility\ShapeRecognizers\Correlation.cs" />
+    <Compile Include="Utility\ShapeRecognizers\HoughCircle.cs" />
+    <Compile Include="Utility\ShapeRecognizers\RectangleParser.cs" />
+    <Compile Include="Utility\TouchHelpers\TouchPointExtensions.cs" />
+    <Compile Include="Utility\TrigonometricCalculationHelper.cs" />
+    <Compile Include="Utility\ShapeRecognizers\ConvexHull\CDLL.cs" />
+    <Compile Include="Utility\ShapeRecognizers\ConvexHull\Convexhull.cs" />
+    <Compile Include="Utility\ShapeRecognizers\ConvexHull\ConvexHullArea.cs" />
+    <Compile Include="Utility\ShapeRecognizers\ConvexHull\Polysort.cs" />
+    <Compile Include="Utility\ShapeRecognizers\ConvexHull\Utility.cs" />
+    <Compile Include="Utility\ShapeRecognizers\EllipseRecognizer.cs" />
+    <Compile Include="Utility\ShapeRecognizers\IShapeRecognizer.cs" />
+    <Compile Include="Utility\TouchHelpers\TouchHistoryTracker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Bin\gestures.gx" />
+    <EmbeddedResource Include="Bin\rulenames.gx" />
+    <None Include="Gesture Definitions\doubleTap.g" />
+    <None Include="Gesture Definitions\lasso.g" />
+    <None Include="Gesture Definitions\drag.g" />
+    <None Include="Gesture Definitions\left.g" />
+    <None Include="Gesture Definitions\multi-finger-selection.g" />
+    <None Include="Gesture Definitions\pinch.g" />
+    <None Include="Gesture Definitions\rotate.g" />
+    <None Include="Gesture Definitions\tap.g" />
+    <None Include="Gesture Definitions\zoom.g" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gesture Definitions\ReadMe.txt" />
+    <None Include="Gesture Definitions\box.g" />
+    <None Include="Gesture Definitions\line.g" />
+    <None Include="Gesture Definitions\right.g" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

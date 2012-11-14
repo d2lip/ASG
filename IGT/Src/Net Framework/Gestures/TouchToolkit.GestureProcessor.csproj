@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61A73B75-7404-4A80-9953-80AE47BA05DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TouchToolkit.GestureProcessor</RootNamespace>
+    <AssemblyName>TouchToolkit.GestureProcessor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\TouchToolkit.GestureProcessor.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\TouchToolkit.GestureProcessor.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV">
+      <HintPath>..\..\emgu_dlls\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>..\..\emgu_dlls\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util">
+      <HintPath>..\..\emgu_dlls\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Silverlight\Gestures\Exceptions\InvalidDataSetException.cs">
+      <Link>Exceptions\InvalidDataSetException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Exceptions\LanguageSyntaxErrorException.cs">
+      <Link>Exceptions\LanguageSyntaxErrorException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Exceptions\UnexpectedDataFormatException.cs">
+      <Link>Exceptions\UnexpectedDataFormatException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Feedbacks\GestureFeedbacks\HighlightSelectedArea.cs">
+      <Link>Feedbacks\GestureFeedbacks\HighlightSelectedArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Feedbacks\GestureFeedbacks\IGestureFeedback.cs">
+      <Link>Feedbacks\GestureFeedbacks\IGestureFeedback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Feedbacks\TouchFeedbacks\BubblesPath.cs">
+      <Link>Feedbacks\TouchFeedbacks\BubblesPath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Feedbacks\TouchFeedbacks\ITouchFeedback.cs">
+      <Link>Feedbacks\TouchFeedbacks\ITouchFeedback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Gesture Definitions\Gestures.cs">
+      <Link>Gesture Definitions\Gestures.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\FrameInfo.cs">
+      <Link>Objects\FrameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\Gesture.cs">
+      <Link>Objects\Gesture.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\GestureInfo.cs">
+      <Link>Objects\GestureInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\LanguageTokens\GestureToken.cs">
+      <Link>Objects\LanguageTokens\GestureToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\LanguageTokens\LanguageToken.cs">
+      <Link>Objects\LanguageTokens\LanguageToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\LanguageTokens\ReturnToken.cs">
+      <Link>Objects\LanguageTokens\ReturnToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\LanguageTokens\ValidateToken.cs">
+      <Link>Objects\LanguageTokens\ValidateToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\PartiallyEvaluatedGestures.cs">
+      <Link>Objects\PartiallyEvaluatedGestures.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\PrimitiveConditionCollection.cs">
+      <Link>Objects\PrimitiveConditionCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\PrimitiveConditionResultCache.cs">
+      <Link>Objects\PrimitiveConditionResultCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ReturnTypeInfo.cs">
+      <Link>Objects\ReturnTypeInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ReturnTypeInfoCollection.cs">
+      <Link>Objects\ReturnTypeInfoCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\TouchFrame.cs">
+      <Link>Objects\TouchFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\TouchInfo.cs">
+      <Link>Objects\TouchInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\TouchPoint2.cs">
+      <Link>Objects\TouchPoint2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ValidateBlockResult.cs">
+      <Link>Objects\ValidateBlockResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ValidationBlock.cs">
+      <Link>Objects\ValidationBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ValidSetOfPoints.cs">
+      <Link>Objects\ValidSetOfPoints.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Objects\ValidSetOfPointsCollection.cs">
+      <Link>Objects\ValidSetOfPointsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\ClosedLoop.cs">
+      <Link>PrimitiveConditions\Objects\ClosedLoop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\DistanceBetweenPoints.cs">
+      <Link>PrimitiveConditions\Objects\DistanceBetweenPoints.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\EnclosedArea.cs">
+      <Link>PrimitiveConditions\Objects\EnclosedArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\IntersectTouchPath.cs">
+      <Link>PrimitiveConditions\Objects\IntersectTouchPath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\IPrimitiveConditionData.cs">
+      <Link>PrimitiveConditions\Objects\IPrimitiveConditionData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\OnSameObject.cs">
+      <Link>PrimitiveConditions\Objects\OnSameObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchArea.cs">
+      <Link>PrimitiveConditions\Objects\TouchArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchDirection.cs">
+      <Link>PrimitiveConditions\Objects\TouchDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchLimit.cs">
+      <Link>PrimitiveConditions\Objects\TouchLimit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchPathBoundingBox.cs">
+      <Link>PrimitiveConditions\Objects\TouchPathBoundingBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchPathLength.cs">
+      <Link>PrimitiveConditions\Objects\TouchPathLength.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchShape.cs">
+      <Link>PrimitiveConditions\Objects\TouchShape.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchState.cs">
+      <Link>PrimitiveConditions\Objects\TouchState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchStep.cs">
+      <Link>PrimitiveConditions\Objects\TouchStep.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Objects\TouchTime.cs">
+      <Link>PrimitiveConditions\Objects\TouchTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\ClosedLoopValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\ClosedLoopValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\DistanceBetweenPointsValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\DistanceBetweenPointsValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\EnclosedAreaValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\EnclosedAreaValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\IntersectTouchPathValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\IntersectTouchPathValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\IPrimitiveConditionValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\IPrimitiveConditionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\OnSameObjectValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\OnSameObjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\RuleValidationHelper.cs">
+      <Link>PrimitiveConditions\RuleValidators\RuleValidationHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchAreaValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchAreaValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchDirectionValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchDirectionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchLimitValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchLimitValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchPathBoundingBoxValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchPathBoundingBoxValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchPathLengthValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchPathLengthValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchShapeValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchShapeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchStateValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchStateValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchStepValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchStepValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\PrimitiveConditions\Validators\TouchTimeValidator.cs">
+      <Link>PrimitiveConditions\RuleValidators\TouchTimeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\BoundingBox.cs">
+      <Link>ReturnTypes\BoundingBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\BoundingBoxCalculator.cs">
+      <Link>ReturnTypes\BoundingBoxCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\DistanceChanged.cs">
+      <Link>ReturnTypes\DistanceChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\DistanceChangedCalculator.cs">
+      <Link>ReturnTypes\DistanceChangedCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\Info.cs">
+      <Link>ReturnTypes\Info.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\InfoCalculator.cs">
+      <Link>ReturnTypes\InfoCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\IReturnType.cs">
+      <Link>ReturnTypes\IReturnType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\IReturnTypeCalculator.cs">
+      <Link>ReturnTypes\IReturnTypeCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\PositionChanged.cs">
+      <Link>ReturnTypes\PositionChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\PositionChangedCalculator.cs">
+      <Link>ReturnTypes\PositionChangedCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\ReturnTypeHelperExtensions.cs">
+      <Link>ReturnTypes\ReturnTypeHelperExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\SlopeChanged.cs">
+      <Link>ReturnTypes\SlopeChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\SlopeChangedCalculator.cs">
+      <Link>ReturnTypes\SlopeChangedCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchActions.cs">
+      <Link>ReturnTypes\TouchActions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchActionsCalculator.cs">
+      <Link>ReturnTypes\TouchActionsCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchID.cs">
+      <Link>ReturnTypes\TouchID.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchIDCalculator.cs">
+      <Link>ReturnTypes\TouchIDCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchPaths.cs">
+      <Link>ReturnTypes\TouchPaths.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchPathsCalculator.cs">
+      <Link>ReturnTypes\TouchPathsCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchPoints.cs">
+      <Link>ReturnTypes\TouchPoints.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\ReturnTypes\TouchPointsCalculator.cs">
+      <Link>ReturnTypes\TouchPointsCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\Combinations\Combinations.cs">
+      <Link>Utility\Combinations\Combinations.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\Combinations\CombinatorialBase.cs">
+      <Link>Utility\Combinations\CombinatorialBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\CommonHelperMethods.cs">
+      <Link>Utility\CommonHelperMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\CircleRecognizer.cs">
+      <Link>Utility\ShapeRecognizers\CircleRecognizer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\ConvexHull\CDLL.cs">
+      <Link>Utility\ShapeRecognizers\ConvexHull\CDLL.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\ConvexHull\Convexhull.cs">
+      <Link>Utility\ShapeRecognizers\ConvexHull\Convexhull.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\ConvexHull\ConvexHullArea.cs">
+      <Link>Utility\ShapeRecognizers\ConvexHull\ConvexHullArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\ConvexHull\Polysort.cs">
+      <Link>Utility\ShapeRecognizers\ConvexHull\Polysort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\ConvexHull\Utility.cs">
+      <Link>Utility\ShapeRecognizers\ConvexHull\Utility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\Correlation.cs">
+      <Link>Utility\ShapeRecognizers\Correlation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\EllipseRecognizer.cs">
+      <Link>Utility\ShapeRecognizers\EllipseRecognizer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\HoughCircle.cs">
+      <Link>Utility\ShapeRecognizers\HoughCircle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\IShapeRecognizer.cs">
+      <Link>Utility\ShapeRecognizers\IShapeRecognizer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\ShapeRecognizers\RectangleParser.cs">
+      <Link>Utility\ShapeRecognizers\RectangleParser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\TouchHelpers\TouchHistoryTracker.cs">
+      <Link>Utility\TouchHelpers\TouchHistoryTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\TouchHelpers\TouchPointExtensions.cs">
+      <Link>Utility\TouchHelpers\TouchPointExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Gestures\Utility\TrigonometricCalculationHelper.cs">
+      <Link>Utility\TrigonometricCalculationHelper.cs</Link>
+    </Compile>
+    <Compile Include="Feedbacks\TouchFeedbacks\ShowSelection.cs" />
+    <Compile Include="imagList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>imagList.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\TouchImage.cs" />
+    <Compile Include="PrimitiveConditions\Objects\AngleBetween.cs" />
+    <Compile Include="PrimitiveConditions\Objects\PerpendicularTo.cs" />
+    <Compile Include="PrimitiveConditions\Objects\Tag.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchHand.cs" />
+    <Compile Include="PrimitiveConditions\Objects\TouchRelativePosition.cs" />
+    <Compile Include="PrimitiveConditions\RuleValidators\AngleBetweenValidator.cs" />
+    <Compile Include="PrimitiveConditions\RuleValidators\PerpendicularToValidator.cs" />
+    <Compile Include="PrimitiveConditions\RuleValidators\TagValidator.cs" />
+    <Compile Include="PrimitiveConditions\RuleValidators\TouchHandValidator.cs" />
+    <Compile Include="PrimitiveConditions\RuleValidators\TouchRelativePositionValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ImageHelper.cs" />
+    <Compile Include="Utility\PointTranslator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Silverlight\Gestures\Bin\gestures.gx">
+      <Link>bin\gestures.gx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Silverlight\Gestures\Bin\rulenames.gx">
+      <Link>bin\rulenames.gx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="imagList.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>imagList.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\doubleTap.g">
+      <Link>Gesture Definitions\doubleTap.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\lasso.g">
+      <Link>Gesture Definitions\lasso.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\left.g">
+      <Link>Gesture Definitions\left.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\pinch.g">
+      <Link>Gesture Definitions\pinch.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\right.g">
+      <Link>Gesture Definitions\right.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\tap.g">
+      <Link>Gesture Definitions\tap.g</Link>
+    </None>
+    <None Include="..\..\Silverlight\Gestures\Gesture Definitions\zoom.g">
+      <Link>Gesture Definitions\zoom.g</Link>
+    </None>
+    <None Include="Gesture Definitions\hold.g" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VERTICAL.jpg" />
+    <None Include="Resources\OPENL.jpg" />
+    <None Include="Resources\FLAT.jpg" />
+    <None Include="Resources\OPEN.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

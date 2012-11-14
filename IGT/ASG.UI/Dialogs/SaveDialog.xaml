@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="ASG.UI.Dialogs.SaveDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="http://schemas.microsoft.com/surface/2008"
+             MaxHeight="200"
+             MinWidth="400">
+    <Grid  Background="#282828">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"
+                           MaxHeight="50"></RowDefinition>
+            <RowDefinition Height="*"
+                           MaxHeight="50"></RowDefinition>
+            <RowDefinition Height="20*"
+                           MaxHeight="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"
+                   Width="Auto">
+            <Label DockPanel.Dock="Left"
+                   Content="SAVE PROJECT"
+                   Foreground="White"
+                   FontSize="25"></Label>
+            <s:SurfaceButton DockPanel.Dock="Right"
+                             Name="Close"
+                             Click="Close_Click"
+                             FontSize="20"
+                             Foreground="#00B4FF"
+                             Background="#282828"
+                             HorizontalAlignment="Right"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             FontWeight="Normal"
+                             Content="CLOSE"
+                             Width="100"></s:SurfaceButton>
+        </DockPanel>
+        <DockPanel   Grid.Row="1"
+                     LastChildFill="True"
+                     Width="Auto">
+            <Label Content="PROTOTYPE NAME:"
+                   FontSize="20"
+                   Foreground="White"
+                   DockPanel.Dock="Left"></Label>
+            <s:SurfaceTextBox Name="FileName"
+                              DockPanel.Dock="Right"
+                              FontSize="25"
+                              Background="White"
+                              HorizontalAlignment="Stretch"></s:SurfaceTextBox>
+        </DockPanel>
+        <DockPanel Grid.Row="2"
+                   LastChildFill="False">
+            <s:SurfaceButton Content="SAVE"
+                             Width="100"
+                             FontSize="25"
+                             Name="SaveButton"
+                             DockPanel.Dock="Bottom"
+                             Click="Save_Click"
+                             Foreground="#00B4FF"
+                             Background="#282828"
+                             HorizontalAlignment="Right"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"></s:SurfaceButton>
+        </DockPanel>
+    </Grid>
+</UserControl>
