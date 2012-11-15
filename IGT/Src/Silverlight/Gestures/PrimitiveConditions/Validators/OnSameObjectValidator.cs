@@ -74,7 +74,13 @@ namespace TouchToolkit.GestureProcessor.PrimitiveConditions.Validators
 
         public List<IPrimitiveConditionData> GenerateRules(List<TouchPoint2> points)
         {
-            return null;
+
+
+
+            //Always return on same object validator for generating a rule
+
+
+            return new List<IPrimitiveConditionData>() { new OnSameObject(){Condition = true}};
         }
     }
 }

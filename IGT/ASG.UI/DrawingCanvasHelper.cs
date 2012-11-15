@@ -49,10 +49,6 @@ namespace ASG.UI
             return (p.X > (_container.ActualCenter.X - _container.ActualWidth / 2));
         }
 
-      
-
-
-
         public void loadPenSettings(TouchEventArgs e = null)
         {
             double _width = 0;
@@ -86,7 +82,6 @@ namespace ASG.UI
                         PageInkCanvas.EraserShape = new EllipseStylusShape(_width * 30, _height * 30);
                         PageInkCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
                         break;
-
                     }
                 case PenMode.Selection:
                     {
@@ -106,8 +101,6 @@ namespace ASG.UI
                     }
             }
         }
-
-
 
 
         public void BindScatterViewItemAndElement(ScatterViewItem svi,  PrototypeElement element)

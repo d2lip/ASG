@@ -43,6 +43,7 @@
                               DockPanel.Dock="Right"
                               FontSize="25"
                               Background="White"
+                              Foreground="Black"
                               HorizontalAlignment="Stretch"></s:SurfaceTextBox>
         </DockPanel>
         <DockPanel Grid.Row="2"

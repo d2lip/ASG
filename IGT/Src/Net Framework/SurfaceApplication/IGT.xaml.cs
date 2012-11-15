@@ -84,7 +84,7 @@ namespace SurfaceApplication
         private void RulesButton_Click(object sender, RoutedEventArgs e)
         {
             rules.accuracy = Convert.ToDouble(options.accuracy.Text);
-            addUserControl(rules, this.Height / 1.2, this.Width / 1.5);
+            addUserControl(rules, this.Height / 1.2, this.Width / 1.2);
 
 
         }
@@ -105,6 +105,8 @@ namespace SurfaceApplication
                 svi.Width = width;
                 svi.Visibility = System.Windows.Visibility.Hidden;
                 svi.Center = new System.Windows.Point(svi.Width / 2, svi.Height / 2); // CanvasItem.ActualCenter;
+                svi.CanRotate = false;
+
             }
 
 
@@ -149,9 +151,7 @@ namespace SurfaceApplication
         {
             LayoutGrid.Height = this.ActualHeight;
             LayoutGrid.Width = this.ActualWidth;
-            //    GestureFramework.Initialize(provider, LayoutRoot, Assembly.GetExecutingAssembly());
-            // GestureFramework.AddTouchFeedback(typeof(ShowSelection));
-            //     GestureFramework.EventManager.MultiTouchChanged += new TouchInputProvider.MultiTouchChangeEventHandler(EventManager_MultiTouchChanged);
+           
             String msg = "Click 'Record gesture'" + Environment.NewLine +
                             "and perform the gesture you want the tool to learn" + Environment.NewLine +
                             "here on the canvas";
@@ -335,7 +335,7 @@ namespace SurfaceApplication
                     ScatterView Container = (this.Parent as ScatterView);
                     var svi = Container.ItemContainerGenerator.ContainerFromItem(this) as ScatterViewItem;
                     GestureFramework.EventManager.RemoveEvent(svi, GestureName.Text.ToLower());
-                    TryButton.Content = "Try gesture";
+                    TryButton.Content = "TRY";
                 }
                 catch (Exception ex)
                 {
@@ -355,10 +355,10 @@ namespace SurfaceApplication
             }
             else
             {
-                TryButton.Content = "Done!";
+                TryButton.Content = "DONE";
 
                 msg = "To test the created gesture" + Environment.NewLine +
-                            "perform it on the testArea bellow";
+                            "perform it here";
                 GestureLanguageProcessor.ReLoadGestureDefinitions();
                 try
                 {
@@ -386,13 +386,14 @@ namespace SurfaceApplication
             GestureFramework.EventManager.RemoveEvent(testArea, GestureName.Text.ToLower());
             testArea.Visibility = Visibility.Hidden;
             gesture.Visibility = Visibility.Visible;
-            TryButton.Content = "Try gesture";
+            TryButton.Content = "TRY";
         }
 
 
 
         private void CompileButton_Click(object sender, RoutedEventArgs e)
         {
+            
             string msg = "";
 
             if (GestureName.Text.Count() > 1)
@@ -434,8 +435,8 @@ namespace SurfaceApplication
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
         {
-            provider = null;
-            GestureFramework.EventManager.MultiTouchChanged -= new TouchInputProvider.MultiTouchChangeEventHandler(EventManager_MultiTouchChanged);
+           // provider = null;
+           // GestureFramework.EventManager.MultiTouchChanged -= new TouchInputProvider.MultiTouchChangeEventHandler(EventManager_MultiTouchChanged);
             Container.Items.Remove(options);
             Container.Items.Remove(rules);
             ((ScatterView)this.Parent).Items.Remove(this);

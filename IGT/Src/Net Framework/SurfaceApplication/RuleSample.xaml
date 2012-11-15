@@ -17,18 +17,21 @@
                            Foreground="Black"
                            FontSize="10"
                            Text="{Binding}"></TextBlock>
+                <!--
+                  FUTURE WORK 
                 <s:SurfaceButton DockPanel.Dock="Right"
                                  Name="DeleteLine"
                                  Margin="0,20,0,0"
                                  Click="DeleteLine_Click">
+              
                     <Image Width="20"
                            Source="/IGT;component/Resources/delete.png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"></Image>
-                </s:SurfaceButton>
+                </s:SurfaceButton>-->
             </DockPanel>
         </DataTemplate>
-        <Style TargetType="{x:Type ListBoxItem}"
+       <!-- <Style TargetType="{x:Type ListBoxItem}"
                x:Key="ContainerStyle">
             <Setter Property="ContentTemplate"
                     Value="{StaticResource ItemTemplate}" />
@@ -39,7 +42,7 @@
                             Value="{StaticResource SelectedTemplate}" />
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </UserControl.Resources>
     <s:SurfaceScrollViewer Background="Gray">
         <Grid Background="Gray">
@@ -60,8 +63,9 @@
             </Viewbox>
             <s:SurfaceListBox Name="rule"
                               Grid.Column="1"
-                              SelectionMode="Single"
-                              ItemContainerStyle="{StaticResource ContainerStyle}"></s:SurfaceListBox>
+                              SelectionMode="Single">
+                              <!-- ItemContainerStyle="{StaticResource ContainerStyle}" -->
+                              </s:SurfaceListBox>
             <!-- <TextBox Name="rule" Grid.Column="1" HorizontalAlignment="Stretch"></TextBox> -->
             <s:SurfaceButton Background="Gray"
                              Name="RemoveSample"

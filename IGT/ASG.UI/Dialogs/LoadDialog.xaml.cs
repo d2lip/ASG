@@ -137,9 +137,9 @@ namespace ASG.UI.Dialogs
                 try
                 {
                     sessionManager.LoadProject(EnvironmentFolder.getProjectsFolder() +ProjectList.SelectedItem.ToString());
-                    sessionManager.LoadPage(sessionManager.CurrentPage);
-                    instance.loadProjectGestureArea();
                     instance.SetupAndRenderPage(sessionManager.CurrentPage);
+                    instance.loadGestureAreasFromCurrentProject();
+
                     msg = "Project loaded";
                 }
                 catch (Exception er)

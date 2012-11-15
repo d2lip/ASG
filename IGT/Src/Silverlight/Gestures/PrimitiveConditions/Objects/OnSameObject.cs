@@ -50,8 +50,8 @@ namespace TouchToolkit.GestureProcessor.PrimitiveConditions.Objects
 
         public string ToGDL()
         {
-            if (this.Condition == true)
-                return string.Format("On same object");
+            if (this.Condition)
+                return string.Format("On same object: true");
             else
                 return string.Empty;
         }
@@ -59,7 +59,7 @@ namespace TouchToolkit.GestureProcessor.PrimitiveConditions.Objects
 
         public bool isComplex()
         {
-            return false;
+            return true;
         }
     }
 }

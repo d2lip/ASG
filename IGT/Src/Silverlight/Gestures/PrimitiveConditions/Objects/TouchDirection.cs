@@ -25,8 +25,13 @@ namespace TouchToolkit.GestureProcessor.PrimitiveConditions.Objects
             UpLeft,
             UpRight
 
-            // NOTE: We are not providing any diagonal direction matching because
-            //       that would make gestures dependent on Screen Orentation/position
+        }
+        public enum Orientations
+        {
+            Horizontal = 0,
+            Vertical,
+            Diagonal
+
         }
 
         private String _values;

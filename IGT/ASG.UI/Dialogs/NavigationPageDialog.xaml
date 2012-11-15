@@ -13,7 +13,7 @@
                                         FontSize="25"  Foreground="Black">Low-fidelity prototype pages</Label>
                 <s:SurfaceButton DockPanel.Dock="Right" Name="Close" Click="Close_Click" 
                                  FontSize="25" Foreground="#00B4FF" Background="#282828" 
-                                 HorizontalAlignment="Right"   Content="Cancel" Width="65"></s:SurfaceButton>
+                                 HorizontalAlignment="Right"   Content="Cancel" Width="95"></s:SurfaceButton>
                 
             </DockPanel>
             <s:SurfaceListBox x:Name="PagesListBox" Height="Auto" BorderBrush="{x:Null}" Width="Auto" HorizontalAlignment="Stretch" 

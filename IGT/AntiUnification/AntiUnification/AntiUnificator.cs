@@ -36,7 +36,7 @@ namespace AntiUnification
          */
 
         //  samples will hold a list and each element of this list 
-        // if the samle gesture, therefore each element will hold a list itself with the gestures captured for that sample
+        // if the sample gesture, therefore each element will hold a list itself with the gestures captured for that sample
 
 
 
@@ -47,11 +47,9 @@ namespace AntiUnification
         private const string STEP = "step";
 
 
-
-
         public static List<SetOfPrimitives> getAllSamples()
         {
-            
+
             return samples;
         }
 
@@ -81,13 +79,10 @@ namespace AntiUnification
             matchingAccuracy = 1 - percent;
         }
 
-
-
-
         public static void checkRules()
         {
 
-            if ((samples == null)|| (samples.Count < 1))
+            if ((samples == null) || (samples.Count < 1))
             {
                 return;
             }
@@ -103,48 +98,55 @@ namespace AntiUnification
             // Always create a new solution based on the gestures
             solution = new SetOfPrimitives();
 
-            // This loop will search for a relation between the primitives
-            PrimitiveData primitive;
-            for (int i = 0; i < samples[0].Count; i++)
-            {
-                primitive = samples[0][i];
-                if (primitive.ID.Count > 1)
-                {// complex gestures                  
-                    checkValueComplexPrimitives(primitive);
-                    checkStringComplexPrimitives(primitive);
-                }
-                else
-                {
-                    checkProportionforPrimitive(primitive, i);
-                    checkStringListPrimitives(primitive, 0);
+            // All the samples will be compared to the first as 
+            // the anti-unification will look for all the elements that
+            // are common through all the samples
+            SetOfPrimitives firstSample = samples[0];
 
-                }
+            foreach (PrimitiveData primitive in firstSample)
+            {
+
+                checkProportionforPrimitive(primitive);
+
+                PrimitiveData antiUnifiedString = checkStringListPrimitives(primitive);
+                if (antiUnifiedString != null)
+                    solution.Add(antiUnifiedString);
+
+
+               PrimitiveData antiUnifiedComplex =  checkValueComplexPrimitives(primitive);
+               if (antiUnifiedComplex != null)
+                   solution.Add(antiUnifiedComplex);             
+                
+              
+
             }
 
 
 
         }
 
-        private static void checkValueComplexPrimitives(PrimitiveData data)
+        private static PrimitiveData checkValueComplexPrimitives(PrimitiveData reference)
         {
             //calculate the difference between the alphas            
             // if the difference is than TOLERANCE -- that means that all the alpha have similar values
             // if alpha is about 1 then use a fixed value (that means that all the examples have a similar value)
             // if create a mutiplicity rule using the average of SUM(alphas)                        
 
-         
+
+            if (reference.ID.Count() > 1)
+                return null;
 
             IEnumerable<PrimitiveData> similarValues = from set in samples
                                                        from primitive in set
-                                                       where primitive.Name == data.Name
-                                                       && data.Value != 0
-                                                       && data.IDcompare(primitive.ID)
+                                                       where primitive.Name == reference.Name
+                                                       && reference.Value != 0
+                                                       && reference.IDcompare(primitive.ID)
                                                        && !(from s in solution
-                                                         select s.Name)
-                                                            .Contains(data.Name)
+                                                            select s.Name)
+                                                            .Contains(reference.Name)
                                                        select primitive;
 
-
+            PrimitiveData newPrimitive = null;
 
             if ((similarValues != null) && (similarValues.Count() == samples.Count))
             {
@@ -157,72 +159,38 @@ namespace AntiUnification
                 double maxDifference = values.Max() - values.Min();
                 double tolerance = Math.Round(value * matchingAccuracy, 2);
 
+              
 
                 if (maxDifference > tolerance)
-                    return;
-
-                PrimitiveData newPrimitive = new PrimitiveData();
-                newPrimitive.ID = data.ID;
-                newPrimitive.Name = data.Name;
-                newPrimitive.Value = 0;
-                newPrimitive.ListValue.Add((value - tolerance) + ".." + (value + tolerance));
-                solution.Add(newPrimitive);
-            }
-
-
-
-
-
-
-
-
-
-            /*
-
-
-
-
-
-
-
-            double value;
-            List<double> values = new List<double>();
-
-            SetOfPrimitives gesture;
-
-            if ((data.Value == 0) || (gestureIdx + 1 == samples.Count))
-            {
-                return;
-            }
-            values.Add(data.Value);
-            for (int i = gestureIdx + 1; i < samples.Count; i++)
-            {
-                gesture = samples.ElementAt(i);
-                foreach (PrimitiveData compare in gesture)
-                {
-                    if ((data.Value != 0) && (data.Name == compare.Name) && (data.IDcompare(compare.ID)))
+                    return newPrimitive;
+                else if (maxDifference == 0)
                     {
-                        values.Add(compare.Value);
+                        newPrimitive = new PrimitiveData();
+                        newPrimitive.ID = reference.ID;
+                        newPrimitive.Name = reference.Name;
+                        newPrimitive.Value = value;
+                    
                     }
-
+                else if (maxDifference <= tolerance)
+                {
+                    newPrimitive = new PrimitiveData();
+                    newPrimitive.ID = reference.ID;
+                    newPrimitive.Name = reference.Name;
+                    newPrimitive.Value = 0;
+                    newPrimitive.ListValue.Add((value - tolerance) + ".." + (value + tolerance));
                 }
+      
+
             }
+            return newPrimitive;
 
 
-            value = Math.Round(values.Average(), 2);
-            double maxDifference = values.Max() - values.Min();
-            double tolerance = Math.Round(value * matchingAccuracy, 2);
 
 
-            if (maxDifference > tolerance)
-                return;
 
-            PrimitiveData newPrimitive = new PrimitiveData();
-            newPrimitive.ID = data.ID;
-            newPrimitive.Name = data.Name;
-            newPrimitive.Value = 0;
-            newPrimitive.ListValue.Add((value - tolerance) + ".." + (value + tolerance));
-            solution.Add(newPrimitive);*/
+
+
+
         }
 
 
@@ -243,6 +211,7 @@ namespace AntiUnification
                                                         && data.Value == 0
                                                         && data.IDcompare(primitive.ID)
                                                         && data.StrListcompare(primitive.ListValue)
+
                                                         select primitive;
 
 
@@ -264,7 +233,7 @@ namespace AntiUnification
         private static void checkConstantValuePrimitives(PrimitiveData data)
         {
             /*
-             * On the same sample, compare to see the relation between the basic primitives, if there is any proportion, if find any, create a new complex primitive that will
+             * On the same sample, compare to see the relation between the basic primitives, if there is any proportion,  create a new complex primitive that will
              * reference the basic similar ones
              */
 
@@ -311,57 +280,45 @@ namespace AntiUnification
         }
 
 
-
-        private static void checkStringListPrimitives(PrimitiveData data, int gestureIdx)
+        private static PrimitiveData checkStringListPrimitives(PrimitiveData reference)
         {
-            /*
-             * On the same sample, compare to see the relation between the basic primitives, 
-             * if there is any proportion, if find any, create a new complex primitive that will
-             * reference the basic similar ones
-             */
 
-            SetOfPrimitives gesture;
-            SetOfPrimitives strPrimitives = new SetOfPrimitives();
-            IEnumerable<string> commonItem = data.ListValue;
 
-            for (int i = gestureIdx + 1; i < samples.Count; i++)
+            // gets all the string primitives with the same name, step and with at least one value in its list of values that is similar
+            IEnumerable<PrimitiveData> antiUnified = (from sample in samples
+                                                      from primitive in sample
+                                                      where primitive.IDcompare(reference.ID)
+                                                      && primitive.Name == reference.Name
+                                    
+                                                      select primitive);
+
+           // List<PrimitiveData> toCompare = antiUnified.ToList();
+
+
+
+
+            // this primitive exists on the same step for all the samples
+            if (antiUnified.Count() == samples.Count())
             {
-                gesture = samples.ElementAt(i);
+                IEnumerable<string> intersectedValue = reference.ListValue;
 
-                foreach (PrimitiveData compare in gesture)
+                foreach (PrimitiveData value in antiUnified)
                 {
-                    if ((data.Value == 0) && (data.Name == compare.Name)
-                        && ((data.IDcompare(compare.ID))))
-                    {
-                        commonItem = commonItem.Intersect(compare.ListValue);
-
-                        /* foreach (string item in data.ListValue)
-                         {
-                             if (compare.ListValue.Contains(item))
-                             {
-                                 commonItem.Add(item);
-                                 strPrimitives.Add(new PrimitiveData());
-                            
-                             }
-                        
-                         }*/
-
-
-                    }
+                    intersectedValue = value.ListValue.Intersect(intersectedValue);
                 }
+
+                if (intersectedValue.Count() > 0)
+                    return new PrimitiveData()
+                    {
+                        ID = reference.ID,
+                        Name = reference.Name,
+                        ListValue = intersectedValue.ToList(),
+                        PointsRecognized = reference.PointsRecognized,
+                        Value = reference.Value
+                    };
             }
 
-
-
-            if (commonItem.Count() > 0)
-            {
-                PrimitiveData newPrimitive = new PrimitiveData();
-                newPrimitive.ID = data.ID;
-                newPrimitive.Name = data.Name;
-                newPrimitive.Value = 0;
-                newPrimitive.ListValue = commonItem.ToList();
-                solution.Add(newPrimitive);
-            }
+            return null;
         }
 
 
@@ -386,13 +343,13 @@ namespace AntiUnification
 
 
 
-        private static void checkProportionforPrimitive(PrimitiveData data, int dataIdx)
+        private static void checkProportionforPrimitive(PrimitiveData reference)
         {
             /*
              * On the same sample, compare to see the relation between the basic primitives, if there is any proportion, if find any, create a new complex primitive that will
              * reference the basic similar ones
              */
-            if (data.Value == 0)
+            if (reference.Value == 0)
             {
                 return;
 
@@ -408,13 +365,13 @@ namespace AntiUnification
 
 
 
-            PrimitiveData originalData = data;
+            PrimitiveData originalData = reference;
             SetOfPrimitives gesture;
             List<SetOfPrimitives> proportions = new List<SetOfPrimitives>();
-            PrimitiveData newPrimitive;
+            PrimitiveData newPrimitive = null;
             List<double> values = new List<double>();
 
-            values.Add(data.Value);
+            values.Add(reference.Value);
 
             int i = 0;
             gesture = samples.ElementAt(i);
@@ -427,23 +384,23 @@ namespace AntiUnification
                     compare = gesture[j];
 
 
-                    if ((data.Name == compare.Name) && (data.IDcompare(compare.ID)))
+                    if ((reference.Name == compare.Name) && (reference.IDcompare(compare.ID)))
                     {
                         values.Add(compare.Value);
                     }
 
-                    if (data.Equals(compare))
+                    if (reference.Equals(compare))
                     {
                         continue;
                     }
 
-                    if ((data.Name == compare.Name) && (compare.ID.Count == 1) && (data.ID[0] < compare.ID[0]))
+                    if ((reference.Name == compare.Name) && (compare.ID.Count == 1) && (reference.ID[0] < compare.ID[0]))
                     {
                         newPrimitive = new PrimitiveData();
-                        newPrimitive.Name = data.Name;
-                        newPrimitive.IDadd(data.ID[0]);
+                        newPrimitive.Name = reference.Name;
+                        newPrimitive.IDadd(reference.ID[0]);
                         newPrimitive.IDadd(compare.ID[0]);
-                        newPrimitive.Value = compare.Value / data.Value;
+                        newPrimitive.Value = compare.Value / reference.Value;
 
                         while (proportions.Count <= i)
                         {
@@ -457,18 +414,18 @@ namespace AntiUnification
                 if (i < samples.Count)
                 {
                     gesture = samples.ElementAt(i);
-                    data = getPrimitiveWithSameName(data, gesture);
-                    if (data == null)
+                    reference = getPrimitiveWithSameName(reference, gesture);
+                    if (reference == null)
                         return;
 
-                    values.Add(data.Value);
+                    values.Add(reference.Value);
 
                 }
             }
             // After the loops, the proportions should have the same amount of items as samples
             // and each setofprimitive of proportion should have the same amount of primitives
             // If not, then nothing will be add to solution
-            // if it is, the the same comparison should be done in proportions
+            // if it is, the same comparison should be done in proportions
 
             if (proportions.Count < samples.Count)
             {
@@ -506,12 +463,13 @@ namespace AntiUnification
 
                 else if ((maxDifference != 0))
                 {
+                    string variable = VariableName.getAvailableLetter();
                     // Adds the x primitive
                     newPrimitive = new PrimitiveData();
                     newPrimitive.IDadd(proportions[0][i].ID[0]);
                     newPrimitive.Name = proportions[0][i].Name;
                     newPrimitive.Value = 0;
-                    newPrimitive.ListValue.Add("x");
+                    newPrimitive.ListValue.Add(variable);
                     solution.checkAndAdd(newPrimitive);
 
                     // adds the alpha*x primitive
@@ -522,7 +480,7 @@ namespace AntiUnification
                     double alpha = Math.Round(alphas.Average(), 2);
                     //newPrimitive.strValue = alpha + "x";
                     tolerance = Math.Round(alpha * matchingAccuracy, 2);
-                    newPrimitive.ListValue.Add((alpha - tolerance) + "x.." + (alpha + tolerance) + "x");
+                    newPrimitive.ListValue.Add((alpha - tolerance) + variable + ".." + (alpha + tolerance) + variable);
                     solution.checkAndAdd(newPrimitive);
 
                 }
@@ -725,12 +683,8 @@ namespace AntiUnification
             List<string> complexSteps = new List<string>();
 
             int step = 1;
-          
+
             IdComparer comparer = new IdComparer();
-
-            
-
-
             for (int i = 0; i < primitives.Count; i++)
             {
                 if (primitives[i] == null)
@@ -740,23 +694,16 @@ namespace AntiUnification
 
             primitives.Sort(comparer);
 
-           // result.Insert(0, name);
+
 
             foreach (PrimitiveData primitive in primitives)
             {
                 if ((primitive.ID.Count == 1))   // Simple primitives
                 {
-                
                     if (primitive.ID[0] != step)
                     {
-                        result.Add("validate as step" + step + Environment.NewLine);
-                        if (steps.Count > 0)
-                        {  
-                            // Adding primitives from this step
-                            result.AddRange(steps);
-                            steps = new List<string>();
-                        }
-                        step = primitive.ID[0];            
+                        steps.Add("validate as step" + primitive.ID[0]);
+                        step++;
                     }
 
                     if (primitive.ListValue.Count == 0)
@@ -779,45 +726,37 @@ namespace AntiUnification
                     string primitiveID = primitive.IDtoString();
                     if (primitiveID != "")
                         primitiveID = " " + primitiveID;
-                   
+
                     if (primitive.ListValue.Count == 0)
                     {
-                        complexSteps.Add(SPACE + primitive.Name + primitiveID + ":" + Math.Round(primitive.Value, 2) );
+                        complexSteps.Add(SPACE + primitive.Name + primitiveID + ":" + Math.Round(primitive.Value, 2));
 
                     }
                     else
                     {
-                        complexSteps.Add(SPACE + primitive.Name + primitiveID + ":" + string.Join(",", primitive.ListValue) );
+                        complexSteps.Add(SPACE + primitive.Name + primitiveID + ":" + string.Join(",", primitive.ListValue));
 
                     }
                 }
             }
 
-            if (step == 1)            
-                result.Add("validate");
-            
-            else             
-                result.Add("validate as step" + step );
-            
+            if (step == 1)
+                result.Insert(0, "validate");
+            else
+                result.Insert(0, "validate as step1");
 
-            if (steps.Count > 0)
+            result.AddRange(steps);
+            if (complexSteps.Count > 1)
             {
-                result.AddRange(steps);
-                steps = new List<string>();
-               
-            }
-
-
-            if (step > 1)
-            {
-                if (complexSteps.Count > 0)
+                if (step > 1)
                     result.Add("validate");
+
                 result.AddRange(complexSteps);
             }
 
             result.Add("return" + Environment.NewLine + SPACE + "Touch points");
 
-        
+
             return result;
 
 

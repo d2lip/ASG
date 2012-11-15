@@ -87,6 +87,7 @@ namespace ASG.UI
         {
             InitializeComponent();
             handler = _handler;
+            igt = new SurfaceApplication.IGT(handler, mainCanvasRoot, Container);
 
             CreateASG(root);
         }
@@ -345,7 +346,7 @@ namespace ASG.UI
 
         }
 
-        public void loadProjectGestureArea()
+        public void loadGestureAreasFromCurrentProject()
         {
             IEnumerable<ASGPage> list = from object item in
                                             ActiveSessionManager.CurrentProject.PageDictionary.Values
@@ -357,9 +358,14 @@ namespace ASG.UI
                 IEnumerable<PrototypeElement> items = from object item in page.PrototypeElementDictionary.Values
                                                       select item as PrototypeElement;
                 List<PrototypeElement> ItemsList = items.ToList();
+                 Visibility visibility;
                 foreach (PrototypeElement item in ItemsList)
                 {
-                    addThisElementToCanvas(page, item, item.Orientation, Visibility.Hidden);
+                    if (ActiveSessionManager.CurrentPage.UniqueId == page.UniqueId)
+                        visibility= Visibility.Visible;
+                    else
+                         visibility = Visibility.Hidden;
+                    addThisElementToCanvas(page, item, item.Orientation, visibility);
 
                 }
             }
@@ -413,7 +419,6 @@ namespace ASG.UI
 
             svi.Background = new SolidColorBrush(Colors.Transparent);
             svi.ContainerManipulationCompleted += ScatterViewItem_ScatterManipulationCompleted;
-            //canvasHelper.RemoveScatterViewItemEffects(svi);            
             return svi;
         }
 
@@ -424,33 +429,15 @@ namespace ASG.UI
        * ADDS IT TO CONTAINER AND ACTIVESESSIONMANAGER
        * AND BINDS IT TO A PROTOTYPE ELEMENT
        */
-        // REFACTOR THIS METHOD
         public void addThisElementToCanvas(ASGPage page, PrototypeElement _element,
             double _orientation, System.Windows.Visibility _visibility = System.Windows.Visibility.Visible)
         {
             GestureArea area = getNewGestureArea(_element);
             ScatterViewItem svi = CreateGestureAreaContainer(area);
             svi.Visibility = _visibility;
+            canvasHelper.BindScatterViewItemAndElement(svi, _element);
 
-            PrototypeElement element;
-            if (_element == null)
-                element = new PrototypeElement { ElementType = ElementTypes.None, Orientation = _orientation, Center = svi.ActualCenter };
-            else
-            {
-                element = new PrototypeElement
-                {
-                    BackgroundImage = _element.BackgroundImage,
-                    ElementType = _element.ElementType,
-                    Orientation = _element.Orientation,
-                    Center = _element.Center,
-                    Width = _element.Width,
-                    Height = _element.Height,
-                    GestureTargetPageMap = _element.GestureTargetPageMap
-                };
-            }
-            canvasHelper.BindScatterViewItemAndElement(svi, element);
-
-            ActiveSessionManager.AddPrototypeElementToPage(page, element);
+           
         }
 
         #endregion
@@ -742,6 +729,7 @@ namespace ASG.UI
         {
             Rect b = selectedStrokes.GetBounds();
             PrototypeElement element = new PrototypeElement { BackgroundImage = "", Orientation = defaultOrientation, Width = b.Width, Height = b.Height, Center = new Point(b.Location.X + b.Width / 2, b.Location.Y + b.Height / 2) };
+            ActiveSessionManager.AddPrototypeElementToPage(ActiveSessionManager.CurrentPage, element);
             addThisElementToCanvas(ActiveSessionManager.CurrentPage, element, element.Orientation);
         }
 
@@ -846,8 +834,7 @@ namespace ASG.UI
 
 
         private void Record_Click(object sender, RoutedEventArgs e)
-        {
-            igt = new SurfaceApplication.IGT(handler, mainCanvasRoot, Container);
+        {            
             var svi = Container.ItemContainerGenerator.ContainerFromItem(igt) as ScatterViewItem;
 
             if (svi == null)
@@ -949,7 +936,6 @@ namespace ASG.UI
             setContainerItemsVisibility(pageToCopy, Visibility.Hidden);
             ActiveSessionManager.AddNewPageToProject();
             ActiveSessionManager.CurrentPage.BackgroundImageSource = pageToCopy.BackgroundImageSource;
-
             SetupAndRenderPage(ActiveSessionManager.CurrentPage);
             PageInkCanvas.Strokes.Clear();
             PageInkCanvas.Strokes.Add(StrokeHelper.ConvertToStrokeCollection(pageToCopy.Strokes));
@@ -987,8 +973,6 @@ namespace ASG.UI
 
             GestureArea area = getNewGestureArea(duplicatedElement);
             ScatterViewItem svi = CreateGestureAreaContainer(area);
-
-
 
             canvasHelper.BindScatterViewItemAndElement(svi, duplicatedElement);
 

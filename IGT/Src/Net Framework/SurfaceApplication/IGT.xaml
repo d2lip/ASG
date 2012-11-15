@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:s="http://schemas.microsoft.com/surface/2008">
+             xmlns:s="http://schemas.microsoft.com/surface/2008"
+>
     <Canvas Name="LayoutRoot"
             Background="#282828"
             HorizontalAlignment="Stretch"
@@ -50,7 +51,7 @@
                         Name="gesture"
                         PreviewTouchDown="gesture_ContactDown"
                         TouchLeave="gesture_ContactLeave"
-                        PreviewTouchMove="gesture_ContactChanged">
+                        TouchMove="gesture_ContactChanged">
                 <s:SurfaceInkCanvas.DefaultDrawingAttributes>
                     <DrawingAttributes Height="10"
                                        Width="10"
@@ -183,9 +184,10 @@
                        FontSize="22"
                        TextTrimming="WordEllipsis"
                        TextWrapping="Wrap"
-                       Panel.ZIndex="1"
                        TextAlignment="Center"
-                       Visibility="Hidden" />
+                       Visibility="Hidden" 
+                       />
+            
         </Grid>
     </Canvas>
 </UserControl>
